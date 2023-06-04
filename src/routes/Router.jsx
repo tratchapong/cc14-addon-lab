@@ -3,6 +3,7 @@ import Header from '../pages/Header'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import AHome from '../pages/AHome'
 
 export default function Router() {
 
@@ -14,7 +15,8 @@ export default function Router() {
         <Outlet />
       </>,
       children : [
-        { index: true , element: <Home/> },
+        // { index: true , element: <Home/> },
+        { index: true , element: <AHome/> },
         { path: '/login' , element: <Login />},
         { path: '/register' , element: <Register/> },
         { path: '/logout' , element: <div className="text-xl">Logout</div> },
