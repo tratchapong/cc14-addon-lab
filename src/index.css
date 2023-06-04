@@ -7,3 +7,7 @@
 html {
   font-family: 'Anuphan', sans-serif;
 }
+
+.active {
+  @apply bg-blue-800 text-white
+}
