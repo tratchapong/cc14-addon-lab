@@ -1,7 +1,18 @@
 import {useForm} from 'react-hook-form'
+import { joiResolver } from '@hookform/resolvers/joi'
+import Joi from 'joi'
+
+const RegisterSchema = Joi.object({
+  username: Joi.string().email({ minDomainSegments: 2, tlds: false }).required(),
+  password: Joi.string().min(3).required(),
+  confirmPassword: Joi.ref('password')
+}).options({allowUnknown: true})
+
 
 export default function Register() {
-  const {register, handleSubmit} = useForm()
+  const {register, handleSubmit, formState: {errors}} = useForm({
+    resolver: joiResolver(RegisterSchema)
+  })
 
   const onSubmit = (formData) => {
     console.log(formData)
@@ -21,6 +32,7 @@ export default function Register() {
               className="w-full input input-bordered input-primary"
               {...register('username')}
             />
+             { errors.username && <p className='text-red-500'>{errors.username.message}</p>}
           </div>
           <div>
             <label className="label">
@@ -32,17 +44,19 @@ export default function Register() {
               className="w-full input input-bordered input-primary"
               {...register('password')}
             />
+            { errors.password && <p className='text-red-500'>{errors.password.message}</p>}
           </div>
           <div>
             <label className="label">
               <span className="text-base label-text">Confirm password</span>
             </label>
             <input
-              type="password"
+              type="text"
               placeholder="Confirm Password"
               className="w-full input input-bordered input-primary"
               {...register('confirmPassword')}
-            />
+              />
+            { errors.confirmPassword && <p className='text-red-500'>Confirm password not match..</p>}
           </div>
           <div className="grid place-items-end"> 
             <button className="btn btn-primary">Register</button>
