@@ -8,6 +8,14 @@ html {
   font-family: 'Anuphan', sans-serif;
 }
 
-.active {
-  @apply bg-blue-800 text-white
+.myform form {
+  @apply grid grid-cols-1 border w-3/4 p-8 mx-auto
+}
+
+.myform form > * {
+  @apply block border p-2 m-2
+}
+
+.myform  label {
+  @apply flex gap-2
 }
