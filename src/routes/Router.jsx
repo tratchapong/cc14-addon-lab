@@ -5,6 +5,7 @@ import Login from '../pages/Login'
 import Register from '../pages/Register'
 import AHome from '../pages/AHome'
 import Form from '../pages/Form'
+import Product from '../pages/Product'
 
 export default function Router() {
 
@@ -22,6 +23,7 @@ export default function Router() {
         { path: '/register' , element: <Register/> },
         { path: '/form' , element: <Form/> },
         { path: '/logout' , element: <div className="text-xl">Logout</div> },
+        { path: '/product' , element: <Product/> },
         { path: '*', element: <h1 className='text-xl text-red-300'>Page not found</h1>}
       ]
     }
