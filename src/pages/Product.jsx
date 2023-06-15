@@ -6,13 +6,14 @@ import ProductCard from "../components/ProductCard";
 export default function Product() {
   const [allProduct, setAllProduct] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [reload, setReload] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     axios.get("http://localhost:8080/products").then((rs) => {
       setAllProduct(rs.data);
     }).finally( _=> setLoading(false))
-  }, []);
+  }, [reload]);
 
   if(loading) 
     return <div className="text-2xl p-5 border text-center">Loading...</div>
@@ -31,7 +32,7 @@ export default function Product() {
 
         <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
           {allProduct.slice(11,20).map((el) => (
-            <ProductCard key={el.id} item={el} />
+            <ProductCard key={el.id} item={el} doReload={_=> setReload(prv => !prv)}/>
           ))}
         </ul>
       </div>

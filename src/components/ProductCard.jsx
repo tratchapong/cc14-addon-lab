@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useRef } from "react";
 import Modal from "./Modal";
+import axios from "axios";
 
 export default function ProductCard(props) {
   const { id, title, price, description, images } = props.item;
@@ -17,6 +18,14 @@ export default function ProductCard(props) {
       setInput(e.target.value);
     }
   };
+
+  const hdlDel = () => {
+    axios.delete(`http://localhost:8080/products/${id}`).then( _=> {
+      // alert('Delete done')
+      // window.location.reload()
+      props.doReload()
+    })
+  }
   return (
     <>
       <li>
@@ -39,6 +48,7 @@ export default function ProductCard(props) {
 
               <span className="tracking-wider text-gray-900"> £{price} GBP </span>
             </p>
+            <button className="btn btn-error" onClick={hdlDel}>Delete</button>
           </div>
         </a>
       </li>
@@ -54,7 +64,7 @@ export default function ProductCard(props) {
           onChange={hdlChange}
         />
 
-        <label className="modal-action btn" htmlFor={`item${id}`} ref={ref}>
+        <label className="modal-action btn btn-primary" htmlFor={`item${id}`} ref={ref}>
           Close
         </label>
       </Modal>
