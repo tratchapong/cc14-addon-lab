@@ -9,7 +9,7 @@ export default function Product() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get("https://api.escuelajs.co/api/v1/products").then((rs) => {
+    axios.get("http://localhost:8080/products").then((rs) => {
       setAllProduct(rs.data);
     }).finally( _=> setLoading(false))
   }, []);
