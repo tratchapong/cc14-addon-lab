@@ -1,22 +1,20 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
-import axios, { all } from "axios";
 import ProductCard from "../components/ProductCard";
 
+import {useGetProductsQuery} from '../features/api/apiSlice'
+
 export default function Product() {
-  const [allProduct, setAllProduct] = useState([]);
-  const [loading, setLoading] = useState(false)
-  const [reload, setReload] = useState(false)
+const {
+  data: allProduct,
+  isLoading,
+  isError,
+  error
+} = useGetProductsQuery()
 
-  useEffect(() => {
-    setLoading(true)
-    axios.get("http://localhost:8080/products").then((rs) => {
-      setAllProduct(rs.data);
-    }).finally( _=> setLoading(false))
-  }, [reload]);
-
-  if(loading) 
+  if(isLoading) 
     return <div className="text-2xl p-5 border text-center">Loading...</div>
+  if(isError) 
+    return <div className="text-2xl p-5 border text-red-500">Error : {error} </div>
 
   return (
     <section>
@@ -32,7 +30,7 @@ export default function Product() {
 
         <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
           {allProduct.slice(11,20).map((el) => (
-            <ProductCard key={el.id} item={el} doReload={_=> setReload(prv => !prv)}/>
+            <ProductCard key={el.id} item={el} />
           ))}
         </ul>
       </div>

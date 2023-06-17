@@ -239,26 +239,6 @@
       }
     },
     {
-      "id": 17,
-      "title": "Handcrafted Steel Chips",
-      "price": 48,
-      "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-      "images": [
-        "https://picsum.photos/640/640?r=1007",
-        "https://picsum.photos/640/640?r=4397",
-        "https://picsum.photos/640/640?r=5381"
-      ],
-      "creationAt": "2023-06-12T02:09:06.000Z",
-      "updatedAt": "2023-06-12T02:09:06.000Z",
-      "category": {
-        "id": 5,
-        "name": "Others",
-        "image": "https://picsum.photos/640/640?r=7929",
-        "creationAt": "2023-06-12T02:09:06.000Z",
-        "updatedAt": "2023-06-12T02:09:06.000Z"
-      }
-    },
-    {
       "id": 23,
       "title": "Rustic Soft Mouse",
       "price": 393,
@@ -274,26 +254,6 @@
         "id": 5,
         "name": "Others",
         "image": "https://picsum.photos/640/640?r=7929",
-        "creationAt": "2023-06-12T02:09:06.000Z",
-        "updatedAt": "2023-06-12T02:09:06.000Z"
-      }
-    },
-    {
-      "id": 24,
-      "title": "Handmade Frozen Keyboard",
-      "price": 20,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "images": [
-        "https://picsum.photos/640/640?r=4614",
-        "https://picsum.photos/640/640?r=2484",
-        "https://picsum.photos/640/640?r=4259"
-      ],
-      "creationAt": "2023-06-12T02:09:06.000Z",
-      "updatedAt": "2023-06-12T02:09:06.000Z",
-      "category": {
-        "id": 3,
-        "name": "Furniture",
-        "image": "https://picsum.photos/640/640?r=2731",
         "creationAt": "2023-06-12T02:09:06.000Z",
         "updatedAt": "2023-06-12T02:09:06.000Z"
       }

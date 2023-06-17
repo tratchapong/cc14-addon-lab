@@ -1,31 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState, useRef } from "react";
+import {useDeleteProductMutation} from '../features/api/apiSlice'
+import { useRef } from "react";
 import Modal from "./Modal";
-import axios from "axios";
 
 export default function ProductCard(props) {
   const { id, title, price, description, images } = props.item;
-
-  const [input, setInput] = useState("");
+  const [deleteProduct] = useDeleteProductMutation()
   const ref = useRef();
 
-  const hdlChange = (e) => {
-    if (input.includes("xxx")) {
-      setInput("");
-      ref.current.click();
-    } else {
-      setInput(e.target.value);
-    }
-  };
-
   const hdlDel = () => {
-    axios.delete(`http://localhost:8080/products/${id}`).then( _=> {
-      // alert('Delete done')
-      // window.location.reload()
-      props.doReload()
-    })
+    deleteProduct(id)
   }
+  
   return (
     <>
       <li>
@@ -56,13 +43,6 @@ export default function ProductCard(props) {
         <div className="text-4xl">{title}</div>
         <div className="text-xl">{description}</div>
         <div className="text-2xl">{price}THB</div>
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full max-w-xs"
-          value={input}
-          onChange={hdlChange}
-        />
 
         <label className="modal-action btn btn-primary" htmlFor={`item${id}`} ref={ref}>
           Close
