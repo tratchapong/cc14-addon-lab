@@ -1,25 +1,34 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import {useDeleteProductMutation} from '../features/api/apiSlice'
+import { useForm } from "react-hook-form";
+import { useDeleteProductMutation, useUpdateProductMutation } from "../features/api/apiSlice";
 import { useRef } from "react";
 import Modal from "./Modal";
+import FormProduct from "./FormProduct";
 
 export default function ProductCard(props) {
   const { id, title, price, description, images } = props.item;
-  const [deleteProduct] = useDeleteProductMutation()
+  const [deleteProduct] = useDeleteProductMutation();
+  const [updateProduct] = useUpdateProductMutation()
+
   const ref = useRef();
 
   const hdlDel = () => {
-    deleteProduct(id)
-  }
-  
+    deleteProduct(id);
+  };
+  const onSubmit = (input) => {
+    updateProduct({...props.item, ...input})
+    ref.current.click()
+  };
+
+
   return (
     <>
       <li>
         <a href="#" className="block overflow-hidden group">
           <label htmlFor={`item${id}`}>
             <img
-              src={images[0]}
+              src={images ? images[0] : 'https://www.svgrepo.com/show/513701/food.svg'}
               alt=""
               className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
             />
@@ -35,18 +44,18 @@ export default function ProductCard(props) {
 
               <span className="tracking-wider text-gray-900"> £{price} GBP </span>
             </p>
-            <button className="btn btn-error" onClick={hdlDel}>Delete</button>
+            <button className="btn btn-error" onClick={hdlDel}>
+              Delete
+            </button>
           </div>
         </a>
       </li>
-      <Modal modal_name={`item${id}`}>
-        <div className="text-4xl">{title}</div>
-        <div className="text-xl">{description}</div>
-        <div className="text-2xl">{price}THB</div>
 
-        <label className="modal-action btn btn-primary" htmlFor={`item${id}`} ref={ref}>
-          Close
+      <Modal modal_name={`item${id}`}>
+        <label className="modal-action relative top-[-1.5rem]" htmlFor={`item${id}`} ref={ref}>
+          X
         </label>
+        <FormProduct item={props.item} onSubmit={onSubmit}/>
       </Modal>
     </>
   );
