@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export default function Modal({modal_name, children }) {
 
   return (
@@ -8,7 +9,7 @@ export default function Modal({modal_name, children }) {
             {children}
         </div>
         <label className="modal-backdrop" htmlFor={modal_name}>
-          Close
+          
         </label>
       </div>
     </>
