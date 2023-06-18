@@ -14,7 +14,7 @@ export default function FormProduct(props) {
     };
   }
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm(options);
 
   return (
     <form onSubmit={handleSubmit(props.onSubmit)} className="grid grid-cols-1 gap-2">
