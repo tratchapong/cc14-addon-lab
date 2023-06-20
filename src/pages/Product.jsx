@@ -44,10 +44,7 @@ export default function Product() {
             dicta incidunt est ipsam, officia dolor fugit natus?
           </p>
         </header>
-        <Modal modal_name={"AddProduct"}>
-          <label className="modal-action relative top-[-1.5rem]" htmlFor={"AddProduct"} ref={ref}>
-            X
-          </label>
+        <Modal modal_name={"AddProduct"} ref={ref}>
           <FormProduct onSubmit={onSubmit} />
         </Modal>
 

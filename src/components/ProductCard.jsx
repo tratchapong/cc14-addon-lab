@@ -51,10 +51,7 @@ export default function ProductCard(props) {
         </a>
       </li>
 
-      <Modal modal_name={`item${id}`}>
-        <label className="modal-action relative top-[-1.5rem]" htmlFor={`item${id}`} ref={ref}>
-          X
-        </label>
+      <Modal modal_name={`item${id}`} ref={ref}>
         <FormProduct item={props.item} onSubmit={onSubmit}/>
       </Modal>
     </>

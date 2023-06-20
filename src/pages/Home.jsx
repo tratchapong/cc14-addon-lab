@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import ButtonModal from "../components/ButtonModal";
 import Modal from "../components/Modal";
 import Login from "./Login";
 import Register from "./Register"
 
 export default function Home() {
+  const ref = useRef()
   return (
     <div className="hero min-h-[calc(100vh-80px)]">
       <div className="hero-overlay bg-opacity-60"></div>
@@ -23,10 +25,10 @@ export default function Home() {
           </ButtonModal>
         </div>
       </div>
-      <Modal modal_name="login-modal">
+      <Modal modal_name="login-modal" ref={ref}>
         <Login />
       </Modal>
-      <Modal modal_name='register-modal'>
+      <Modal modal_name='register-modal' ref={ref}>
         <Register />
       </Modal>
     </div>

@@ -1,24 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "a2",
-      "price": 1,
-      "description": "a",
-      "images": [
-        "https://placeimg.com/640/480/any"
-      ],
-      "creationAt": "2023-06-12T02:09:06.000Z",
-      "updatedAt": "2023-06-12T13:31:57.000Z",
-      "category": {
-        "id": 5,
-        "name": "Others",
-        "image": "https://picsum.photos/640/640?r=7929",
-        "creationAt": "2023-06-12T02:09:06.000Z",
-        "updatedAt": "2023-06-12T02:09:06.000Z"
-      }
-    },
-    {
       "id": 2,
       "title": "qwe1",
       "price": 2001,
